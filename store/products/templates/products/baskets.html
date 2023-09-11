@@ -1,0 +1,24 @@
+{% for i in baskets %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.product.name }}</h5>
+                    <p class="card-text">{{ i.product.description }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">
+                        <div class="row text-center">
+                            <div class="col-lg-4">
+                                <input name="basketID" type="number" class="form-control"
+                                       value="{{ i.quantity }}" min="0">
+                            </div>
+                            <div class="col-lg-4">{{ i.basket_price }} руб.</div>
+                            <div class="col-lg-4">
+                                <a href="{% url 'products:remove_basket' i.product.pk %}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+{% endfor %}
